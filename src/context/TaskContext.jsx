@@ -15,6 +15,14 @@ export function TaskContextProvider(props) {
     }])
   }
 
+  function ClonarTask(title, description){
+    setTasks([...tasks,{
+      title: title,
+      id: tasks.length,
+      description: description
+    }])
+  }
+
   function deleteTask(taskId){
     setTasks(tasks.filter(task => task.id !== taskId))
   }
@@ -28,7 +36,8 @@ export function TaskContextProvider(props) {
     <TaskContext.Provider value={{
       tasks,
       deleteTask,
-      createTask
+      createTask,
+      ClonarTask
     }}>
       {props.children}
     </TaskContext.Provider>
